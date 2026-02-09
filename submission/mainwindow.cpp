@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Присоедините аудио и видеовыходы к плееру.
+    
     ui->btn_pause->setIcon(QIcon(":/icons/play.png"));
 
     player_ = new prac::QMediaPlayer(this);
@@ -29,21 +29,21 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::on_position_changed(qint64 position) {
-    // Реализуйте обработку сигнала.
+    
     position_changing_ = true;
     ui->sld_pos->setValue(static_cast<int>(position));
     position_changing_ = false;
 }
 
 void MainWindow::on_media_status_changed(QMediaPlayer::MediaStatus status) {
-    // Реализуйте обработку сигнала.
+    
     if(status == QMediaPlayer::LoadedMedia || status == QMediaPlayer::BufferedMedia){
     ui->sld_pos->setMaximum(player_->duration());
     }
 }
 
 void MainWindow::on_playback_state_changed(QMediaPlayer::PlaybackState new_state) {
-    // Реализуйте обработку сигнала.
+    
     if(new_state == QMediaPlayer::PlaybackState::PlayingState){
         ui->btn_pause->setIcon(QIcon(":/icons/pause.png"));
     }
@@ -55,7 +55,7 @@ void MainWindow::on_playback_state_changed(QMediaPlayer::PlaybackState new_state
 
 void MainWindow::on_btn_choose_clicked()
 {
-    // Реализуйте обработку сигнала.
+   
     QString file = prac::QFileDialog::getOpenFileName(this, "Выберите медиафайл");
     player_->setSource(QUrl::fromLocalFile(file));
     player_->play();
@@ -63,7 +63,7 @@ void MainWindow::on_btn_choose_clicked()
 
 void MainWindow::on_btn_pause_clicked()
 {
-    // Реализуйте обработку сигнала.
+    
     switch(player_->playbackState()){
     case QMediaPlayer::PlaybackState::PausedState:
         player_->play();
@@ -86,7 +86,7 @@ void MainWindow::on_sld_volume_valueChanged(int value)
 }
 
 void MainWindow::on_sld_pos_valueChanged(int value){
-    // Реализуйте обработку сигнала.
+   
     if(position_changing_) {
         return;
     }
