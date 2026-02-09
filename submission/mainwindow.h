@@ -21,6 +21,7 @@ public:
     ~MainWindow();
 
 private slots:
+
     void on_btn_choose_clicked();
     void on_position_changed(qint64 position);
     void on_media_status_changed(QMediaPlayer::MediaStatus status);
