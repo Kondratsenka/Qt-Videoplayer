@@ -1,6 +1,0 @@
-# Qt / Qt Creator
-build/
-*.user
-*.autosave
-*.pro.user*
-.qtcreator/
