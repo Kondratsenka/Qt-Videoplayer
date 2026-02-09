@@ -81,7 +81,7 @@ void MainWindow::on_btn_pause_clicked()
 
 void MainWindow::on_sld_volume_valueChanged(int value)
 {
-    // Реализуйте обработку сигнала.
+    
     audio_output_->setVolume(value / 100.f);
 }
 
