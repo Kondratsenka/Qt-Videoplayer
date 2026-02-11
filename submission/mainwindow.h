@@ -36,7 +36,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     prac::QMediaPlayer *player_;
-    QAudioOutput *audio_output_;
-    bool position_changing_ = false;
+    QAudioOutput *audio_output_;           
+    bool position_changing_ = false;    // флаг смены позиции 
 };
 #endif // MAINWINDOW_H
