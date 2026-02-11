@@ -79,23 +79,21 @@ void MainWindow::on_btn_pause_clicked()
     }
 }
 
-void MainWindow::on_sld_volume_valueChanged(int value)
-{
+void MainWindow::on_sld_volume_valueChanged(int value) {
     
-    audio_output_->setVolume(value / 100.f);
+    audio_output_->setVolume(value / 100.f);     // громкость 
 }
 
-void MainWindow::on_sld_pos_valueChanged(int value){
+void MainWindow::on_sld_pos_valueChanged(int value) {   // слайдер измениния громкости видеоплеера
    
     if(position_changing_) {
         return;
     }
-    position_changing_ = true;
+    position_changing_ = true;       // флаг изменения позиции
     player_->setPosition(value);
-    position_changing_ = false;
+    position_changing_ = false;    //   флаг изменения позиции
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {    // деструктор(очищаем память)
     delete ui;
 }
