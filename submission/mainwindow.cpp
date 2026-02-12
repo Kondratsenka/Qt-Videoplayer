@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     
-    ui->btn_pause->setIcon(QIcon(":/icons/play.png"));
+    ui->btn_pause->setIcon(QIcon(":/icons/play.png"));     // устанавливаем иконку на кнопку play
 
     player_ = new prac::QMediaPlayer(this);
     audio_output_= new QAudioOutput(this);
@@ -53,16 +53,14 @@ void MainWindow::on_playback_state_changed(QMediaPlayer::PlaybackState new_state
 
 }
 
-void MainWindow::on_btn_choose_clicked()
-{
+void MainWindow::on_btn_choose_clicked() {                     // кнопка выбора видеофайла
    
     QString file = prac::QFileDialog::getOpenFileName(this, "Выберите медиафайл");
     player_->setSource(QUrl::fromLocalFile(file));
     player_->play();
 }
 
-void MainWindow::on_btn_pause_clicked()
-{
+void MainWindow::on_btn_pause_clicked() {                    // кнопка паузы
     
     switch(player_->playbackState()){
     case QMediaPlayer::PlaybackState::PausedState:
