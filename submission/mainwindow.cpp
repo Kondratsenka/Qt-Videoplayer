@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     audio_output_->setVolume(1.f);
 }
 
-void MainWindow::on_position_changed(qint64 position) {
+void MainWindow::on_position_changed(qint64 position) { 
     
     position_changing_ = true;
     ui->sld_pos->setValue(static_cast<int>(position));
@@ -42,13 +42,13 @@ void MainWindow::on_media_status_changed(QMediaPlayer::MediaStatus status) {
     }
 }
 
-void MainWindow::on_playback_state_changed(QMediaPlayer::PlaybackState new_state) {
+void MainWindow::on_playback_state_changed(QMediaPlayer::PlaybackState new_state) {       // метод смены иконки на кнопке play
     
-    if(new_state == QMediaPlayer::PlaybackState::PlayingState){
+    if(new_state == QMediaPlayer::PlaybackState::PlayingState){                         // если нажата кнопка play, меняем иконку на pause
         ui->btn_pause->setIcon(QIcon(":/icons/pause.png"));
     }
-    else{
-        ui->btn_pause->setIcon(QIcon(":/icons/play.png"));
+    else {
+        ui->btn_pause->setIcon(QIcon(":/icons/play.png"));                          // если нет действий с кнопкой, оставляем на play
     }
 
 }
@@ -60,9 +60,9 @@ void MainWindow::on_btn_choose_clicked() {                     // кнопка �
     player_->play();
 }
 
-void MainWindow::on_btn_pause_clicked() {                    // кнопка паузы
+void MainWindow::on_btn_pause_clicked() {           
     
-    switch(player_->playbackState()){
+    switch(player_->playbackState()) {
     case QMediaPlayer::PlaybackState::PausedState:
         player_->play();
         break;
