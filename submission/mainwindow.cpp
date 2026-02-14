@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include <prac/QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -55,16 +54,16 @@ void MainWindow::on_playback_state_changed(QMediaPlayer::PlaybackState new_state
 
 void MainWindow::on_btn_choose_clicked() {                     // кнопка выбора видеофайла
    
-    QString file = prac::QFileDialog::getOpenFileName(this, "Выберите медиафайл");
+    QString file = prac::QFileDialog::getOpenFileName(this, "Выберите медиафайл");   
     player_->setSource(QUrl::fromLocalFile(file));
     player_->play();
 }
 
-void MainWindow::on_btn_pause_clicked() {           
+void MainWindow::on_btn_pause_clicked() {           // кнопка play(pause)
     
     switch(player_->playbackState()) {
-    case QMediaPlayer::PlaybackState::PausedState:
-        player_->play();
+    case QMediaPlayer::PlaybackState::PausedState:    // если воспроизвидение остановлено
+        player_->play();                             //  продолжаем воспроизведение
         break;
 
     case QMediaPlayer::PlaybackState::StoppedState:
@@ -79,10 +78,10 @@ void MainWindow::on_btn_pause_clicked() {
 
 void MainWindow::on_sld_volume_valueChanged(int value) {
     
-    audio_output_->setVolume(value / 100.f);     // громкость 
+    audio_output_->setVolume(value / 100.f);     // устанавливаем изначальную максимальную громкость на слайдере sld_volume
 }
 
-void MainWindow::on_sld_pos_valueChanged(int value) {   // слайдер измениния громкости видеоплеера
+void MainWindow::on_sld_pos_valueChanged(int value) {    // слайдер измениния громкости видеоплеера
    
     if(position_changing_) {
         return;
