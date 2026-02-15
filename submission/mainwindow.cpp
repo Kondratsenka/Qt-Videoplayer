@@ -62,13 +62,13 @@ void MainWindow::on_btn_choose_clicked() {                     // кнопка �
 void MainWindow::on_btn_pause_clicked() {           // кнопка play(pause)
     
     switch(player_->playbackState()) {
-    case QMediaPlayer::PlaybackState::PausedState:    // если воспроизвидение остановлено
-        player_->play();                             //  продолжаем воспроизведение
+    case QMediaPlayer::PlaybackState::PausedState:            // если воспроизвидение остановлено на паузу
+        player_->play();                                     
         break;
 
-    case QMediaPlayer::PlaybackState::StoppedState:
-        player_->setPosition(0);
-        player_->play();
+    case QMediaPlayer::PlaybackState::StoppedState:       // если воспроизвидение остановлено
+        player_->setPosition(0);                         // перемещаем слайдер sld_pos в начало позиции
+        player_->play();                                // запускаем воспроизведение с начальной позиции
         break;
     case prac::QMediaPlayer::PlaybackState::PlayingState:
         player_->pause();
