@@ -43,7 +43,7 @@ void MainWindow::on_media_status_changed(QMediaPlayer::MediaStatus status) {
 
 void MainWindow::on_playback_state_changed(QMediaPlayer::PlaybackState new_state) {       // метод смены иконки на кнопке play
     
-    if(new_state == QMediaPlayer::PlaybackState::PlayingState){                         // если нажата кнопка play, меняем иконку на pause
+    if(new_state == QMediaPlayer::PlaybackState::PlayingState) {                         // если нажата кнопка play, меняем иконку на pause
         ui->btn_pause->setIcon(QIcon(":/icons/pause.png"));
     }
     else {
